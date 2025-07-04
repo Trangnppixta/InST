@@ -85,7 +85,7 @@
 <!-- ![teaser](./Images/teaser.png) -->
 ![teaser](./Images/teaser.png)
 
-The artistic style within a painting is the means of expression, which includes not only the painting material, colors, and brushstrokes, but also the high-level attributes including semantic elements, object shapes, etc.  Previous arbitrary example-guided artistic image generation methods often fail to control shape changes or convey elements.  The pre-trained text-to-image synthesis diffusion probabilistic models have achieved remarkable quality, but it often requires extensive textual descriptions to accurately portray attributes of a particular painting. We believe that the uniqueness of an artwork lies precisely in the fact that it cannot be adequately explained with normal language.Our key idea is to learn artistic style directly from a single painting and then guide the synthesis without providing complex textual descriptions.  Specifically, we assume style as a learnable textual description of a painting.  We propose an inversion-based style transfer method (InST), which can efficiently and accurately learn the key information of an image, thus capturing and transferring the complete artistic style of a painting.  We demonstrate the quality and efficiency of our method on numerous paintings of various artists and styles.
+The artistic style within a painting is the means of expression, which includes not only the painting material, colors, and brushstrokes, but also the high-level attributes including semantic elements, object shapes, etc.  Previous arbitrary example-guided artistic image generation methods often fail to control shape changes or convey elements.  The pre-trained text-to-image synthesis diffusion probabilistic models have achieved remarkable quality, but it often requires extensive textual descriptions to accurately portray attributes of a particular painting. We believe that the uniqueness of an artwork lies precisely in the fact that it cannot be adequately explained with normal language. Our key idea is to learn artistic style directly from a single painting and then guide the synthesis without providing complex textual descriptions.  Specifically, we assume style as a learnable textual description of a painting.  We propose an inversion-based style transfer method (InST), which can efficiently and accurately learn the key information of an image, thus capturing and transferring the complete artistic style of a painting.  We demonstrate the quality and efficiency of our method on numerous paintings of various artists and styles.
 
 For details see the [paper](https://arxiv.org/abs/2211.13203) 
 
@@ -144,8 +144,9 @@ For packages, see environment.yaml.
                -t 
                --actual_resume ./models/sd/sd-v1-4.ckpt
                -n <run_name> 
-               --gpus 0, 
-               --data_root /path/to/directory/with/images
+               --gpus 0,1 
+               --data_root /home/trangnguyenphuong/LSAST/data/DIV2K_train_HR
+  python main.py --base configs/stable-diffusion/v1-finetune.yaml -t --actual_resume ./models/sd/sd-v1-4.ckpt -n test --gpus 0, --data_root /home/trangnguyenphuong/InST/data/pixta_data/123753_1/train
    ```
    
    See `configs/stable-diffusion/v1-finetune.yaml` for more options

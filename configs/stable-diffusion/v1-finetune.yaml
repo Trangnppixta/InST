@@ -13,7 +13,7 @@ model:
     channels: 4
     cond_stage_trainable: true   # Note: different from the one we trained before
     conditioning_key: crossattn
-    monitor: val/loss_simple_ema
+    monitor: train/loss_simple_step
     scale_factor: 0.18215
     use_ema: False
     embedding_reg_weight: 0.0
@@ -47,7 +47,7 @@ model:
       target: ldm.models.autoencoder.AutoencoderKL
       params:
         embed_dim: 4
-        monitor: val/rec_loss
+        monitor: train/rec_loss
         ddconfig:
           double_z: true
           z_channels: 4
@@ -95,7 +95,7 @@ lightning:
     image_logger:
       target: main.ImageLogger
       params:
-        batch_frequency: 500
+        batch_frequency: 2000
         max_images: 8
         increase_log_steps: False
 

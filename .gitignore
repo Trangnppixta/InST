@@ -1,0 +1,10 @@
+/data/
+*.pyc
+/logs/
+/latent_diffusion.egg-info/
+/outputs/
+preprocess.py
+/models/
+*zip
+/test_data/
+train.sh
